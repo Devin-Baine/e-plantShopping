@@ -40,6 +40,7 @@ const CartItem = ({ onContinueShopping }) => {
   // Announces That Checkout Has Not Yet Opened
   const handleCheckoutShopping = () => {
     setShowCheckoutNotice(true);
+    alert('Coming Soon! Checkout functionality to be added for future reference.');
   };
 
   // Raises the Quantity of the Selected Plant by One
