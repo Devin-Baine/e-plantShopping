@@ -1,16 +1,20 @@
 {
-  "name": "shoppingcart",
+  "name": "e-plantshopping",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Paradise Nursery shopping cart application built with React and Redux Toolkit.",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite build; vite preview --host"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.1"

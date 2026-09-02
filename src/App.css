@@ -1,147 +1,319 @@
-/* LandingPage.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.landing-page {
+/* Application Shell Stacking the Landing Page Beneath the Product Listing */
+.app-container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-color: #f8f8f8;
+  height: 100dvh;
+  background-color: var(--leaf-950);
+  overflow: hidden;
+  overflow: clip;
 }
 
-.background-image {
+/* Landing Page Surface */
+.landing-page {
   position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.55s var(--ease-soft), transform 0.7s var(--ease-out);
+}
+
+/* Landing Page Recedes Rather Than Expanding So the Shell Never Overflows */
+.landing-page.fade-out {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+/* Background Image Behind the Paradise Nursery Landing Page */
+.background-image {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
-  filter: brightness(0.8);
+  background-repeat: no-repeat;
+  z-index: 0;
 }
+
+/* Slow Drifting Zoom Applied to the Background Photograph */
+.background-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: brightness(0.72) saturate(1.08);
+  transform: scale(1.06);
+  animation: landing-drift 26s var(--ease-soft) infinite alternate;
+}
+
+/* Tinted Wash Layered Over the Background Photograph */
+.background-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 20% 20%, rgba(10, 28, 19, 0.28) 0%, rgba(10, 28, 19, 0.82) 70%),
+    linear-gradient(160deg, rgba(29, 75, 51, 0.55) 0%, rgba(10, 28, 19, 0.9) 100%);
+}
+
+@keyframes landing-drift {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.5%, -1.5%, 0);
+  }
+}
+
+/* Two Column Layout Holding the Welcome Panel and the Company Story */
 .content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
- top: 100px;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0,0,0,0.5);
-  gap: 20px;
-}
-
-.landing_content {
- margin-top: 430px;
-  margin-left: 100px;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 1;
-  text-align: center;
-  /* background-color: red; */
-  width: 400px;
-  height: 400px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
   align-items: center;
+  gap: 56px;
+  width: 100%;
+  max-width: var(--shell);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* Welcome Panel Carrying the Company Name and the Get Started Button */
+.landing_content {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0;
 }
 
-.content p,
+.landing-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  padding: 8px 16px;
+  border: 1px solid rgba(232, 211, 168, 0.32);
+  border-radius: var(--radius-pill);
+  background-color: rgba(10, 28, 19, 0.32);
+  backdrop-filter: blur(6px);
+  animation: rise-in 0.8s var(--ease-out) both;
+}
+
 .content h1 {
-  color: white;
-}
-
-.content h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.content p {
-  font-size: 25px;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 600;
+  color: var(--cream);
+  margin-top: 26px;
+  text-wrap: balance;
+  text-shadow: 0 2px 30px rgba(6, 18, 12, 0.5);
+  animation: rise-in 0.8s var(--ease-out) 0.08s both;
 }
 
 .divider {
-  width: 50px;
-  height: 2px;
-  background-color: #4caf50;
-  margin: 10px 0;
+  width: 72px;
+  height: 3px;
+  margin: 26px 0 22px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(200, 163, 92, 0) 100%);
+  animation: rise-in 0.8s var(--ease-out) 0.16s both;
 }
 
+.content p {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(250, 248, 242, 0.86);
+  max-width: 34ch;
+  animation: rise-in 0.8s var(--ease-out) 0.24s both;
+}
+
+/* Primary Call to Action Opening the Product Listing */
 .get-started-button {
-  padding: 15px 25px;
-  font-size: 23px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--leaf-500) 0%, var(--leaf-700) 100%);
+  box-shadow: 0 14px 34px rgba(10, 28, 19, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: transform 0.32s var(--ease-out), box-shadow 0.32s var(--ease-out),
+    background 0.32s var(--ease-soft);
+  animation: rise-in 0.8s var(--ease-out) 0.32s both;
+}
+
+.get-started-button svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.32s var(--ease-out);
 }
 
 .get-started-button:hover {
-  background-color: #45a049;
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--leaf-400) 0%, var(--leaf-600) 100%);
+  box-shadow: 0 20px 44px rgba(10, 28, 19, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-/* ProductList.css */
+.get-started-button:hover svg {
+  transform: translateX(5px);
+}
 
+.get-started-button:active {
+  transform: translateY(-1px);
+}
+
+/* Supporting Figures Printed Below the Call to Action */
+.landing-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px;
+  margin-top: 42px;
+  padding-top: 26px;
+  list-style: none;
+  border-top: 1px solid rgba(250, 248, 242, 0.18);
+  animation: rise-in 0.8s var(--ease-out) 0.4s both;
+}
+
+.landing-highlights li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.landing-highlights strong {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gold-soft);
+}
+
+.landing-highlights span {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 242, 0.66);
+}
+
+/* Frosted Panel Presenting the Company Story */
+.aboutus_container {
+  animation: rise-in 0.9s var(--ease-out) 0.3s both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Product Listing Surface Sliding Up Over the Landing Page */
 .product-list-container {
   position: absolute;
-  overflow-x: hidden;
   top: 100vh;
-  /* Initially off-screen */
+  top: 100dvh;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Adjust background opacity as needed */
-  transition: top 0.5s ease;
-  /* Smooth transition for top property */
+  height: 100dvh;
   overflow-y: auto;
-  /* Enable vertical scrolling */
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  background-color: var(--cream);
+  transition: top 0.72s var(--ease-out);
   z-index: 2;
-  /* Ensure it's above landing page content */
-  backdrop-filter: blur(5px);
 }
 
 .product-list-container.visible {
   top: 0;
 }
-/* LandingPage.css */
-@media screen and (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
 
-  .landing_content {
-    margin-top: 100px; /* Adjust as needed */
-    margin-left: 0;
-    width: 80%; /* Adjust as needed */
+/* Tablet Layout Stacking the Welcome Panel Above the Company Story */
+@media screen and (max-width: 960px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding: 88px 32px 72px;
     text-align: center;
   }
 
-  .aboutus_container {
-    margin-top: 20px; /* Adjust as needed */
-    width: 80%; /* Adjust as needed */
+  .landing_content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .content p {
+    max-width: 44ch;
+  }
+
+  .divider {
+    background: linear-gradient(90deg, rgba(200, 163, 92, 0) 0%, var(--gold) 50%, rgba(200, 163, 92, 0) 100%);
+  }
+
+  .landing-highlights {
+    justify-content: center;
+    gap: 32px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .landing_content {
-    margin-top: 50px; /* Adjust as needed */
-    width: 90%; /* Adjust as needed */
+/* Handset Layout Tightening Spacing and Type Scale */
+@media screen and (max-width: 560px) {
+  .content {
+    gap: 40px;
+    padding: 72px 20px 56px;
   }
 
-  .aboutus_container {
-    width: 90%; /* Adjust as needed */
+  .landing-eyebrow {
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    padding: 7px 14px;
+  }
+
+  .get-started-button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .landing-highlights {
+    gap: 16px;
+    margin-top: 38px;
+    padding-top: 22px;
+  }
+
+  .landing-highlights strong {
+    font-size: 1.4rem;
+  }
+
+  .landing-highlights span {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
   }
 }

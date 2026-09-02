@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+// Vite Configuration Serving the Application From the Repository Sub Path
 export default defineConfig({
-  base: "/shoppingreact",
+  base: '/e-plantShopping',
   plugins: [react()],
-})
+});

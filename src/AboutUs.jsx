@@ -1,30 +1,40 @@
-import React from 'react';
 import './AboutUs.css';
 
 function AboutUs() {
   return (
     <div className="about-us-container">
-      {/* <h1 className="about-us-heading">About Us</h1> */}
-      <p className="about-us-description">Welcome to Paradise Nursery, where green meets serenity!</p>
-      <p className="about-us-content">
-        At Paradise Nursery, we are passionate about bringing nature closer to you. Our mission is to provide a wide range of 
-        high-quality plants that not only enhance the beauty of your surroundings but also contribute to a healthier and 
-        more sustainable lifestyle. From air-purifying plants to aromatic fragrant ones, we have something for every 
-        plant enthusiast.
+      <span className="about-us-eyebrow">About The Company</span>
+      <h2 className="about-us-heading">Paradise Nursery</h2>
+
+      <p className="about-us-description">
+        Welcome to Paradise Nursery, where green meets serenity.
       </p>
-      {/* <p className="plant_logo_left"><img src="https://p1.hiclipart.com/preview/922/979/640/green-leaf-logo-emoji-seedling-emoticon-sticker-plant-plant-stem-flower-png-clipart-thumbnail.jpg" height='50px' width='50px' alt="" /></p> */}
-      <p className="about-us-content">
-        Our team of experts is dedicated to ensuring that each plant meets our strict standards of quality and care. 
-        Whether you're a seasoned gardener or just starting your green journey, we're here to support you every step of 
-        the way. Feel free to explore our collection, ask questions, and let us help you find the perfect plant for your 
-        home or office.
-      </p>
-      {/* <p className="plant_logo_right"><img src="https://p1.hiclipart.com/preview/922/979/640/green-leaf-logo-emoji-seedling-emoticon-sticker-plant-plant-stem-flower-png-clipart-thumbnail.jpg" height='50px' width='50px' alt="" /></p> */}
 
       <p className="about-us-content">
-        Join us in our mission to create a greener, healthier world. Visit Paradise Nursery today and experience the 
-        beauty of nature right at your doorstep.
+        Paradise Nursery began beneath a single valley glasshouse and now cultivates more than two
+        hundred varieties of houseplant across four heated benches.
       </p>
+
+      <p className="about-us-content">
+        Growers on our team propagate every plant by hand and pack it alongside a care card
+        explaining exactly how much light and water it expects.
+      </p>
+
+      <p className="about-us-content">
+        Sustainable practice shapes each decision made here. Peat-free compost fills every pot and
+        harvested rainwater irrigates the whole collection.
+      </p>
+
+      <div className="about-us-signature">
+        <span className="about-us-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M12 21c0-6.5 3.5-10.5 8-12-0.5 7-4 11-8 12Z" />
+            <path d="M12 21C12 14.5 8.5 10.5 4 9c0.5 7 4 11 8 12Z" />
+            <path d="M12 21v-6" />
+          </svg>
+        </span>
+        <p className="about-us-tagline">Cultivated with patience in every pot</p>
+      </div>
     </div>
   );
 }

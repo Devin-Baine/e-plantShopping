@@ -1,33 +1,132 @@
+/* Frosted Card Presenting the Paradise Nursery Company Story */
 .about-us-container {
-    width: 1000px;
-    /* margin: 0 auto; */
-    /* padding: 20px; */
-    /* background-color: red; */
-    text-align: justify;
-  }
-  
-  .about-us-heading {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .about-us-description {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .about-us-content {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  .plant_logo_right{
-    text-align: right;
+  position: relative;
+  padding: 34px 36px 28px;
+  border: 1px solid rgba(250, 248, 242, 0.16);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(155deg, rgba(16, 40, 28, 0.62) 0%, rgba(10, 28, 19, 0.78) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-xl);
+  text-align: left;
+}
+
+/* Slim Accent Rule Running Down the Leading Edge of the Card */
+.about-us-container::before {
+  content: '';
+  position: absolute;
+  top: 34px;
+  bottom: 34px;
+  left: 0;
+  width: 3px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--gold) 0%, rgba(200, 163, 92, 0) 100%);
+}
+
+.about-us-eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 10px;
+}
+
+.about-us-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.about-us-description {
+  font-size: 0.97rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(250, 248, 242, 0.9);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(250, 248, 242, 0.14);
+}
+
+.about-us-content {
+  font-size: 0.865rem;
+  line-height: 1.66;
+  color: rgba(250, 248, 242, 0.76);
+  margin-bottom: 11px;
+}
+
+.about-us-content:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Leaf Mark and Closing Line Signing Off the Card */
+.about-us-signature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(250, 248, 242, 0.14);
+}
+
+.about-us-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 211, 168, 0.34);
+  background-color: rgba(200, 163, 92, 0.12);
+}
+
+.about-us-mark svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--gold-soft);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-us-tagline {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(250, 248, 242, 0.72);
+}
+
+/* Tablet Layout Reducing the Padding of the Story Card */
+@media screen and (max-width: 960px) {
+  .about-us-container {
+    padding: 36px 32px 30px;
   }
 
-  .plant_logo_left{
-    text-align: left;
+  .about-us-container::before {
+    top: 36px;
+    bottom: 36px;
   }
+}
+
+/* Handset Layout Centring the Story Card Content */
+@media screen and (max-width: 560px) {
+  .about-us-container {
+    padding: 30px 22px 26px;
+  }
+
+  .about-us-container::before {
+    display: none;
+  }
+
+  .about-us-heading {
+    font-size: 1.6rem;
+  }
+
+  .about-us-content {
+    font-size: 0.9rem;
+  }
+}
