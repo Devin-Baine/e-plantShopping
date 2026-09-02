@@ -103,7 +103,7 @@ const CartItem = ({ onContinueShopping }) => {
           </span>
           <h3>Nothing potted up yet</h3>
           <p>Browse the collection and the plants chosen will gather here.</p>
-          <button className="continue-shopping-button" onClick={(e) => handleContinueShopping(e)}>
+          <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>
             Continue Shopping
           </button>
         </div>
@@ -180,14 +180,12 @@ const CartItem = ({ onContinueShopping }) => {
             </div>
 
             <div className="continue_shopping_btn">
-              <button className="checkout-button" onClick={handleCheckoutShopping}>
-                Checkout
-              </button>
-              <button
-                className="continue-shopping-button"
-                onClick={(e) => handleContinueShopping(e)}
-              >
+              <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>
                 Continue Shopping
+              </button>
+              <br />
+              <button className="get-started-button1" onClick={handleCheckoutShopping}>
+                Checkout
               </button>
             </div>
 

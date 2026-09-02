@@ -301,43 +301,71 @@
   margin-top: 24px;
 }
 
-.checkout-button {
+/* Skeleton Line Break Kept in the Markup but Hidden From the Stacked Layout */
+.continue_shopping_btn br {
+  display: none;
+}
+
+/* Checkout Action, Scoped So the Landing Page Styles Never Reach It */
+.cart-container .get-started-button1 {
+  display: block;
+  width: 100%;
+  margin-top: 0;
   padding: 15px 24px;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  text-align: center;
   color: var(--cream);
+  border: 1px solid transparent;
   border-radius: var(--radius-pill);
   background: linear-gradient(135deg, var(--leaf-500) 0%, var(--leaf-700) 100%);
   box-shadow: 0 10px 24px rgba(29, 75, 51, 0.26);
+  animation: none;
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out),
     background 0.3s var(--ease-soft);
 }
 
-.checkout-button:hover {
+.cart-container .get-started-button1:hover {
   transform: translateY(-2px);
   background: linear-gradient(135deg, var(--leaf-400) 0%, var(--leaf-600) 100%);
   box-shadow: 0 16px 32px rgba(29, 75, 51, 0.32);
 }
 
-.continue-shopping-button {
+.cart-container .get-started-button1:active {
+  transform: translateY(0);
+}
+
+/* Continue Shopping Action, Overriding Every Landing Page Declaration */
+.cart-container .get-started-button {
+  display: block;
+  width: 100%;
+  margin-top: 0;
   padding: 15px 24px;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  text-align: center;
   color: var(--leaf-700);
   border: 1px solid var(--leaf-200);
   border-radius: var(--radius-pill);
-  background-color: #ffffff;
-  transition: color 0.3s var(--ease-soft), background-color 0.3s var(--ease-soft),
+  background: #ffffff;
+  box-shadow: none;
+  animation: none;
+  transition: color 0.3s var(--ease-soft), background 0.3s var(--ease-soft),
     border-color 0.3s var(--ease-soft), transform 0.3s var(--ease-out);
 }
 
-.continue-shopping-button:hover {
+.cart-container .get-started-button:hover {
   transform: translateY(-2px);
   color: var(--leaf-800);
-  background-color: var(--leaf-50);
+  background: var(--leaf-50);
   border-color: var(--leaf-300);
+  box-shadow: none;
+}
+
+.cart-container .get-started-button:active {
+  transform: translateY(0);
 }
 
 .cart-summary-note {
@@ -395,7 +423,9 @@
   margin-bottom: 12px;
 }
 
-.cart-empty .continue-shopping-button {
+.cart-empty .get-started-button {
+  display: inline-block;
+  width: auto;
   padding-left: 34px;
   padding-right: 34px;
 }
